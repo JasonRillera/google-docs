@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+// import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import dynamic from "next/dynamic";
 
@@ -13,12 +13,12 @@ import Draft from "draft-js";
 import { useRouter } from "next/dist/client/router";
 import { useSession } from "next-auth/client";
 
-const Editor = dynamic(
-    () => import("react-draft-wysiwyg").then((module) => module.Editor),
-    {
-        ssr: false,
-    }
-    );
+// const Editor = dynamic(
+//     () => import("react-draft-wysiwyg").then((module) => module.Editor),
+//     {
+//         ssr: false,
+//     }
+//     );
 
     function TextEditor() {
     const [editorState, setEditorState] = useState(EditorState.createEmpty());
