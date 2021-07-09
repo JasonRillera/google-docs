@@ -1,13 +1,13 @@
-// import { useState } from "react";
+import { useState } from "react";
 import Head from "next/head";
 import Header from "../components/Header";
 import Icon from "@material-tailwind/react/Icon";
 import Button from "@material-tailwind/react/Button";
 import Image from "next/image";
 // import DocumentRow from "../components/DocumentRow";
-// import Modal from "@material-tailwind/react/Modal";
-// import ModalBody from "@material-tailwind/react/ModalBody";
-// import ModalFooter from "@material-tailwind/react/ModalFooter";
+import Modal from "@material-tailwind/react/Modal";
+import ModalBody from "@material-tailwind/react/ModalBody";
+import ModalFooter from "@material-tailwind/react/ModalFooter";
 // import { db } from "../firebase";
 // import firebase from "firebase";
 // import { useRouter } from "next/dist/client/router";
@@ -15,15 +15,15 @@ import Image from "next/image";
 //   useCollection,
 //   useCollectionOnce,
 // } from "react-firebase-hooks/firestore";
-// import { getSession, useSession } from "next-auth/client";
-// import Login from "../components/Login";
+import { getSession, useSession } from "next-auth/client";
+import Login from "../components/Login";
 
 export default function Home() {
-  // const [session, loading] = useSession();
-  // if (!session) return <Login />;
+  const [session, loading] = useSession();
+  if (!session) return <Login />;
 
-  // const [showModal, setShowModal] = useState(false);
-  // const [input, setInput] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const [input, setInput] = useState("");
   // const router = useRouter();
 
   // const [snapshot] = useCollectionOnce(
@@ -34,8 +34,8 @@ export default function Home() {
   //     .orderBy("timestamp", "desc")
   // );
 
-  // const createDocument = () => {
-  //   if (!input) return;
+  const createDocument = () => {
+    if (!input) return;
 
   //   db.collection("userDocs")
   //     .doc(session.user.email)
@@ -46,38 +46,38 @@ export default function Home() {
   //     })
   //     .then((doc) => router.push(`/doc/${doc.id}`));
 
-  //   setInput("");
-  //   setShowModal(false);
-  // };
+    setInput("");
+    setShowModal(false);
+  };
 
-  // const modal = (
-  //   <Modal size="sm" active={showModal} toggler={() => setShowModal(false)}>
-  //     <ModalBody>
-  //       <input
-  //         value={input}
-  //         onChange={(e) => setInput(e.target.value)}
-  //         type="text"
-  //         className="outline-none w-full"
-  //         placeholder="Enter name of document..."
-  //         onKeyDown={(e) => e.key === "Enter" && createDocument()}
-  //       />
-  //     </ModalBody>
-  //     <ModalFooter>
-  //       <Button
-  //         color="blue"
-  //         buttonType="link"
-  //         onClick={(e) => setShowModal(false)}
-  //         ripple="dark"
-  //       >
-  //         Cancel
-  //       </Button>
+  const modal = (
+    <Modal size="sm" active={showModal} toggler={() => setShowModal(false)}>
+      <ModalBody>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+          className="outline-none w-full"
+          placeholder="Enter name of document..."
+          onKeyDown={(e) => e.key === "Enter" && createDocument()}
+        />
+      </ModalBody>
+      <ModalFooter>
+        <Button
+          color="blue"
+          buttonType="link"
+          onClick={(e) => setShowModal(false)}
+          ripple="dark"
+        >
+          Cancel
+        </Button>
 
-  //       <Button color="blue" onClick={createDocument} ripple="light">
-  //         Create
-  //       </Button>
-  //     </ModalFooter>
-  //   </Modal>
-  // );
+        <Button color="blue" onClick={createDocument} ripple="light">
+          Create
+        </Button>
+      </ModalFooter>
+    </Modal>
+  );
 
   return (
     <div className="w-full h-screen">
@@ -87,7 +87,7 @@ export default function Home() {
       </Head>
 
       <Header />
-      {/* {modal} */}
+      {modal}
 
       <section className="bg-[#F8F9FA] pb-10 px-10 md:px-0">
         <div className="max-w-3xl mx-auto">
@@ -107,9 +107,9 @@ export default function Home() {
           <div>
             <div
               className="relative h-52 w-40 border-2 cursor-pointer hover:border-blue-400"
-              // onClick={(e) => setShowModal(true)}
+              onClick={(e) => setShowModal(true)}
             >
-              {/* <Image src="https://links.papareact.com/pju" layout="fill" /> */}
+              <Image src="https://links.papareact.com/pju" layout="fill" />
             </div>
             <p className="ml-2 mt-2 font-semibold text-sm text-gray-700">
               Blank
@@ -140,12 +140,12 @@ export default function Home() {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const session = await getSession(context);
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
 
-//   return {
-//     props: {
-//       session,
-//     },
-//   };
-// }
+  return {
+    props: {
+      session,
+    },
+  };
+}

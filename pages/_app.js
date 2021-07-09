@@ -3,7 +3,7 @@ import "@material-tailwind/react/tailwind.css";
 import Head from "next/head";
 // import "../styles.css";
 // import NextNprogress from "nextjs-progressbar";
-// import { Provider } from "next-auth/client";
+import { Provider } from "next-auth/client";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -15,8 +15,8 @@ function MyApp({ Component, pageProps }) {
         />
       </Head>
 
-      {/* <Provider session={pageProps.session}>
-        <NextNprogress
+      <Provider session={pageProps.session}>
+        {/* <NextNprogress
           color="#2196F3"
           startPosition={0.3}
           stopDelayMs={200}
@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
         /> */}
 
         <Component {...pageProps} />
-      {/* </Provider> */}
+      </Provider>
     </>
   );
 }
