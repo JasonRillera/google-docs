@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-
 import dynamic from "next/dynamic";
-
 import { EditorState } from "draft-js";
 import { convertFromRaw, convertToRaw } from "draft-js";
-
 import { useDocumentOnce } from "react-firebase-hooks/firestore";
 import { db } from "../firebase";
-
-// import Draft from "draft-js";
+import Draft from "draft-js";
 import { useRouter } from "next/dist/client/router";
 import { useSession } from "next-auth/client";
 
@@ -30,15 +26,15 @@ const Editor = dynamic(
         db.collection("userDocs").doc(session.user.email).collection("docs").doc(id)
     );
 
-    // useEffect(() => {
-    //     if (snapshot?.data()?.editorState) {
-    //     setEditorState(
-    //         Draft.EditorState.createWithContent(
-    //         convertFromRaw(snapshot?.data()?.editorState)
-    //         )
-    //     );
-    //     }
-    // }, [snapshot]);
+    useEffect(() => {
+        if (snapshot?.data()?.editorState) {
+        setEditorState(
+            Draft.EditorState.createWithContent(
+            convertFromRaw(snapshot?.data()?.editorState)
+            )
+        );
+        }
+    }, [snapshot]);
 
     const onEditorStateChange = (editorState) => {
         setEditorState(editorState);
