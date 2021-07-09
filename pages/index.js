@@ -4,17 +4,17 @@ import Header from "../components/Header";
 import Icon from "@material-tailwind/react/Icon";
 import Button from "@material-tailwind/react/Button";
 import Image from "next/image";
-// import DocumentRow from "../components/DocumentRow";
+import DocumentRow from "../components/DocumentRow";
 import Modal from "@material-tailwind/react/Modal";
 import ModalBody from "@material-tailwind/react/ModalBody";
 import ModalFooter from "@material-tailwind/react/ModalFooter";
-// import { db } from "../firebase";
-// import firebase from "firebase";
-// import { useRouter } from "next/dist/client/router";
-// import {
-//   useCollection,
-//   useCollectionOnce,
-// } from "react-firebase-hooks/firestore";
+import { db } from "../firebase";
+import firebase from "firebase";
+import { useRouter } from "next/dist/client/router";
+import {
+  useCollection,
+  useCollectionOnce,
+} from "react-firebase-hooks/firestore";
 import { getSession, useSession } from "next-auth/client";
 import Login from "../components/Login";
 
@@ -24,27 +24,27 @@ export default function Home() {
 
   const [showModal, setShowModal] = useState(false);
   const [input, setInput] = useState("");
-  // const router = useRouter();
+  const router = useRouter();
 
-  // const [snapshot] = useCollectionOnce(
-  //   db
-  //     .collection("userDocs")
-  //     .doc(session.user.email)
-  //     .collection("docs")
-  //     .orderBy("timestamp", "desc")
-  // );
+  const [snapshot] = useCollectionOnce(
+    db
+      .collection("userDocs")
+      .doc(session.user.email)
+      .collection("docs")
+      .orderBy("timestamp", "desc")
+  );
 
   const createDocument = () => {
     if (!input) return;
 
-  //   db.collection("userDocs")
-  //     .doc(session.user.email)
-  //     .collection("docs")
-  //     .add({
-  //       fileName: input,
-  //       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-  //     })
-  //     .then((doc) => router.push(`/doc/${doc.id}`));
+    db.collection("userDocs")
+      .doc(session.user.email)
+      .collection("docs")
+      .add({
+        fileName: input,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      })
+      .then((doc) => router.push(`/doc/${doc.id}`));
 
     setInput("");
     setShowModal(false);
@@ -126,14 +126,14 @@ export default function Home() {
             <Icon name="folder" size="3xl" color="gray" />
           </div>
 
-          {/* {snapshot?.docs.map((doc) => (
+          {snapshot?.docs.map((doc) => (
             <DocumentRow
               key={doc.id}
               id={doc.id}
               fileName={doc.data().fileName}
               date={doc.data().timestamp}
             />
-          ))} */}
+          ))}
         </div>
       </section>
     </div>
