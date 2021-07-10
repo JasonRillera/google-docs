@@ -13,7 +13,7 @@ function Header() {
         rounded={true}
         iconOnly={true}
         ripple="dark"
-        className="md:inline-flex h-20 w-20 border-0"
+        className="hidden md:inline-flex h-20 w-20 border-0"
         >
         <Icon name="menu" size="3xl" />
         </Button>

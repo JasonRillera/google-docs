@@ -28,7 +28,7 @@ function Doc() {
     return (
         <div>
         <header className="flex justify-between items-center p-3 pb-1">
-            <span onClick={() => router.push("/")} className="cursor-pointer">
+            <span onClick={() => router.push("/")} className="cursor-pointer mr-2">
             <Icon name="description" size="5xl" color="blue" />
             </span>
             <div className="flex-grow px-2">
@@ -58,7 +58,7 @@ function Doc() {
 
             <img
                 onClick={signOut}
-                className="cursor-pointer h-10 w-10 rounded-full ml-2"
+                className="cursor-pointer h-10 w-10 rounded-full ml-4"
                 src={session.user.image}
                 alt=""
             />
