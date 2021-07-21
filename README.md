@@ -8,6 +8,6 @@
 - Firebase
 - Vercel
 
-![Google Docs Medium Gif](https://media.giphy.com/media/w2vI5VKtzC4JSogfEi/giphy.gif)
+![Google Docs Medium Gif](GoogleDocsGif.gif)
 
 <!-- ## [Live Demo](https://google-docs-2cmyd0g6c-jasonrillera.vercel.app/) -->
