@@ -17,5 +17,3 @@ Jason Rillera: https://github.com/JasonRillera
 ## [Live Demo Link](https://google-docs-2cmyd0g6c-jasonrillera.vercel.app/)
 
 ![Google Docs Medium Gif](GoogleDocsGif.gif)
-
-<!-- ## [Live Demo](https://google-docs-2cmyd0g6c-jasonrillera.vercel.app/) -->
