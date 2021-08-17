@@ -1,12 +1,12 @@
 # Google Docs Clone | [Live Demo](https://google-docs-2cmyd0g6c-jasonrillera.vercel.app/)
 
-**Online Word Processor app using:**
+**Online Word Processor app**
 
-- Next JS
-- Rich Text Editor
-- Tailwind CSS
-- Firebase
-- Vercel
+- Reengineered a fully responsive document authoring tool using the Next JS framework for a dynamic production build
+- Utilized NextAuth to enhance user security and data protections
+- Implemented a third party API (React Draft Wysiwyg) to integrate a Rich Text Editor and
+- Deployed app through Vercel for enhanced scalability for a seamless UX
+- Utilized the maintainability of Tailwind CSS for an adaptable and mobile first design
 
 ![Google Docs Medium Gif](GoogleDocsGif.gif)
 
